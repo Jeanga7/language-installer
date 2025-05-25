@@ -1,0 +1,25 @@
+
+[0;32m→ Mise à jour des dépôts et installation des outils de base...[0m
+[1;33m⏭ Perl est déjà installé. Ignoré.[0m
+[1;33m⏭ PHP est déjà installé. Ignoré.[0m
+[1;33m⏭ Ruby est déjà installé. Ignoré.[0m
+[1;33m→ Installation de Deno...[0m
+[0;32m✔ Deno installé avec succès.[0m
+[1;33m⏭ Node.js est déjà installé. Ignoré.[0m
+[1;33m→ Installation de Java...[0m
+[0;32m✔ Java installé avec succès.[0m
+[1;33m→ Installation de Rust...[0m
+[0;32m✔ Rust installé avec succès.[0m
+[1;33m→ Installation de Go...[0m
+[0;32m✔ Go installé avec succès.[0m
+[1;33m⏭ Python est déjà installé. Ignoré.[0m
+[1;33m→ Installation de Flutter...[0m
+[0;32m✔ Flutter installé via snap.[0m
+[0;31m⚠ Flutter n'est pas dans le PATH. Essayez d'ouvrir un nouveau terminal ou exécutez 'export PATH=$PATH:/snap/bin'.[0m
+[0;32m✔ Flutter installé avec succès.[0m
+[1;33m→ Installation de R...[0m
+[0;32m✔ R installé avec succès.[0m
+[1;33m→ Installation de Dart...[0m
+[0;32m✔ Dart installé avec succès.[0m
+[1;33m⏭ C++ est déjà installé. Ignoré.[0m
+[1;33m→ Installation de C#...[0m
