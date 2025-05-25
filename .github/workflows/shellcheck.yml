@@ -1,0 +1,26 @@
+name: ShellCheck Lint
+
+on:
+  push:
+    paths:
+      - '**.sh'
+  pull_request:
+    paths:
+      - '**.sh'
+
+jobs:
+  shellcheck:
+    name: Lint Shell Scripts with ShellCheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🔍 Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: ✅ Run ShellCheck
+        run: |
+          echo "Running ShellCheck on all *.sh files"
+          find . -type f -name "*.sh" -exec shellcheck {} +
