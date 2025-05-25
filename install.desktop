@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Language Installer
+Comment=Install multiple programming languages easily
+Exec=gnome-terminal -- bash -c "cd ~/Downloads/language-installer && sudo ./install.sh --interactive; exec bash"
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Development;

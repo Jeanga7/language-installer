@@ -1,0 +1,19 @@
+{
+  "template": "## Changelog\n\n{{CHANGELOG}}",
+  "categories": [
+    {
+      "title": "🚀 Features",
+      "labels": ["feature"]
+    },
+    {
+      "title": "🐛 Bug Fixes",
+      "labels": ["bug"]
+    },
+    {
+      "title": "🧰 Maintenance",
+      "labels": ["chore", "refactor"]
+    }
+  ],
+  "excludeLabels": ["ignore"],
+  "sort": "ASC"
+}

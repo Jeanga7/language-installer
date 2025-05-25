@@ -1,0 +1,9 @@
+sections:
+  - title: "🚀 Features"
+    labels: ["feature"]
+  - title: "🐛 Bug Fixes"
+    labels: ["fix"]
+  - title: "🧰 Maintenance"
+    labels: ["chore", "refactor"]
+
+template: ./CHANGELOG.tpl.md
