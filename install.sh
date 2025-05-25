@@ -11,10 +11,10 @@ LOG_FILE="install.log"
 
 declare -A LANGUAGES=(
   ["1"]="Python:python3"
-  ["2"]="Go:golang"
+  ["2"]="Go:go"
   ["3"]="Rust:rustc"
-  ["4"]="Java:default-jdk"
-  ["5"]="Node.js:nodejs"
+  ["4"]="Java:java"
+  ["5"]="Node.js:node"
   ["6"]="Deno:deno"
   ["7"]="Ruby:ruby"
   ["8"]="PHP:php"
@@ -22,14 +22,13 @@ declare -A LANGUAGES=(
   ["10"]="Lua:lua5.4"
   ["11"]="C:gcc"
   ["12"]="C++:g++"
-  ["13"]="C#:mono-complete"
-  ["14"]="Kotlin:default-jdk"
-  ["15"]="Swift:swift"
-  ["16"]="Haskell:ghc"
-  ["17"]="Elixir:elixir"
-  ["18"]="R:r-base"
-  ["19"]="Dart:dart"
-  ["20"]="Flutter:flutter"
+  ["13"]="C#:mono"
+  ["14"]="Kotlin:kotlin"
+  ["15"]="Haskell:ghc"
+  ["16"]="Elixir:elixir"
+  ["17"]="R:R"
+  ["18"]="Dart:dart"
+  ["19"]="Flutter:flutter"
 )
 
 # ========== FONCTIONS ==========
@@ -88,10 +87,20 @@ install_language() {
       curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
       apt install -y nodejs ;;
     "Deno")
-      curl -fsSL https://deno.land/install.sh | sh
-      echo 'export PATH="$HOME/.deno/bin:$PATH"' >> ~/.bashrc ;;
+      if command -v deno &>/dev/null; then
+        log "${YELLOW}⏭ Deno est déjà installé. Ignoré.${NC}"
+      else
+        snap install deno --classic
+      fi
+      ;;
     "Rust")
-      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y ;;
+      if command -v rustc &>/dev/null && command -v cargo &>/dev/null; then
+        log "${YELLOW}⏭ Rust est déjà installé. Ignoré.${NC}"
+      else
+        apt install -y cargo
+        log "${GREEN}✔ Rust (cargo + rustc) installé via apt.${NC}"
+      fi
+      ;;
     "Flutter")
       if ! command -v flutter &>/dev/null; then
         snap install flutter --classic
@@ -115,9 +124,6 @@ install_language() {
       echo "deb [signed-by=/usr/share/keyrings/dart-archive-keyring.gpg] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main" > /etc/apt/sources.list.d/dart_stable.list
       apt update
       apt install -y dart ;;
-    "Swift")
-      apt install -y clang libicu-dev libblocksruntime-dev libcurl4-openssl-dev \
-        libssl-dev uuid-dev libbsd-dev libsqlite3-dev libxml2-dev ;;
     *)
       apt install -y "$package" ;;
   esac
@@ -157,4 +163,27 @@ for key in "${CHOIX[@]}"; do
   fi
 done
 
+check_all_installed() {
+  local all_ok=true
+  log "${GREEN}\n=== Vérification des langages installés ===${NC}"
+  for key in $(printf "%s\n" "${!LANGUAGES[@]}" | sort -n); do
+    IFS=":" read -r NAME PACKAGE <<< "${LANGUAGES[$key]}"
+    if command -v "$PACKAGE" &>/dev/null; then
+      log "${GREEN}✔ $NAME est installé.${NC}"
+    else
+      log "${RED}✗ $NAME n'est PAS installé.${NC}"
+      all_ok=false
+    fi
+  done
+
+  if $all_ok; then
+    log "${GREEN}Tous les langages sont installés.${NC}"
+  else
+    log "${RED}Certains langages ne sont pas installés.${NC}"
+  fi
+}
+
+
 log "${GREEN}\n✔ Installation terminée. Exécutez : source ~/.bashrc${NC}"
+
+# check_all_installed
