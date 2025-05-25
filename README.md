@@ -232,3 +232,5 @@ GitHub: [@jeanga7](https://github.com/jeanga7)
 ## ⭐️ Star if you like it!
 
 If this script saved you time, give it a ⭐️ and share it with your fellow devs!
+
+---
