@@ -1,6 +1,13 @@
 # 🌐 Language Installer Script
 
-A powerful and easy-to-use Bash script to install popular programming languages on Debian-based Linux systems. Designed for developers, students, and sysadmins who want a quick, interactive, and customizable setup.
+![ShellCheck Lint](https://github.com/jeanga7/language-installer/actions/workflows/shellcheck.yml/badge.svg)
+![Version](https://img.shields.io/github/v/release/jeanga7/language-installer?style=flat-square)
+[![ShellCheck](https://img.shields.io/badge/ShellCheck-passed-brightgreen?style=flat-square&logo=gnu-bash)](https://www.shellcheck.net/)
+
+> A professional multi-language installer script for Linux environments.
+
+A powerful and easy-to-use Bash script to install popular programming languages on Debian-based Linux systems.  
+Designed for developers, students, and sysadmins who want a quick, interactive, and customizable setup.
 
 ---
 
@@ -52,12 +59,35 @@ A powerful and easy-to-use Bash script to install popular programming languages 
 
 ## 📥 Installation
 
+Clone the repository and run the installer:
+
 ```bash
 git clone https://github.com/Jeanga7/language-installer.git
 cd language-installer
 chmod +x install.sh
 sudo ./install.sh --interactive
 ````
+
+Or try it online:
+
+[![Run on Replit](https://replit.com/badge/github/Jeanga7/language-installer)](https://replit.com/new/github/Jeanga7/language-installer)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Jeanga7/language-installer)
+
+---
+
+## ⚡️ One-Liner Install
+
+Create a shortcut command:
+
+```bash
+alias install-langs="bash <(curl -sSL https://raw.githubusercontent.com/Jeanga7/language-installer/main/install.sh)"
+```
+
+Then simply run:
+
+```bash
+install-langs
+```
 
 ---
 
@@ -69,15 +99,17 @@ sudo ./install.sh --interactive
 sudo ./install.sh --interactive
 ```
 
-You'll be presented with a menu to select one or more languages to install.
+An interactive menu will guide you to select languages.
 
 ### 💻 CLI Mode
+
+Install selected languages by ID:
 
 ```bash
 sudo ./install.sh 1 3 5
 ```
 
-Installs selected languages by ID (Python, Rust, Node.js in this example).
+*(Python, Rust, Node.js in this example)*
 
 ### 📦 Install All
 
@@ -91,7 +123,7 @@ Installs **everything** in the list.
 
 ## 📄 Output Log
 
-All installation steps and messages are logged in `install.log`:
+All installation steps and outputs are saved in a log file:
 
 ```bash
 less install.log
@@ -101,7 +133,7 @@ less install.log
 
 ## 🧪 Post-Installation Check
 
-Uncomment the `check_all_installed` line at the end of the script to verify installation of all languages:
+Uncomment the line at the end of `install.sh` to automatically verify installs:
 
 ```bash
 # check_all_installed
@@ -111,7 +143,7 @@ Uncomment the `check_all_installed` line at the end of the script to verify inst
 
 ## 🧰 Customization
 
-You can easily add new languages or modify existing ones:
+You can modify or add new languages in the script:
 
 ```bash
 declare -A LANGUAGES=(
@@ -121,21 +153,22 @@ declare -A LANGUAGES=(
 )
 ```
 
-Each entry is in the format: `["ID"]="DisplayName:command_to_check"`
+Each entry follows the format: `["ID"]="DisplayName:command_to_check"`
 
 ---
 
 ## 🛡️ Security
 
-* The script must be run as root (`sudo`) to ensure successful installation.
-* Uses `set -euo pipefail` to exit on any error.
-* Skips already installed languages to avoid duplication or overwrite.
+* Script must be run with `sudo` or root privileges
+* Uses `set -euo pipefail` for safe execution
+* Skips already installed languages
 
 ---
 
 ## 🤝 Contributing
 
-Pull requests and suggestions are welcome! Feel free to fork the repo and make improvements.
+Pull requests and suggestions are welcome!
+Feel free to fork the repo, improve the code, or add more languages.
 
 ---
 
@@ -148,12 +181,13 @@ MIT License. See [LICENSE](./LICENSE) for details.
 ## 👨‍💻 Author
 
 **JeanGa7**
-GitHub: [@your-username](https://github.com/jeanga7)
+GitHub: [@jeanga7](https://github.com/jeanga7)
+
 ---
 
 ## ⭐️ Star if you like it!
 
-If this script saved you time, give it a ⭐️ and share with your fellow devs!
+If this script saved you time, give it a ⭐️ and share it with your fellow devs!
 
 ```
-
+```
